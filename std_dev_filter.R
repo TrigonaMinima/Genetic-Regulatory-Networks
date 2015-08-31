@@ -7,7 +7,6 @@ rsd <- rowSds(dat.m)
 i <- rsd >= 2
 dat.f <- dat.m[i,]
 
-
 print("Creating data dump... (dat.f.txt created)")
 write.table(dat.f,
     "BeforeStatTest/StdFilter/dat.f.txt",
