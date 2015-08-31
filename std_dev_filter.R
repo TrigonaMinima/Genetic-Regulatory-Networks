@@ -3,16 +3,19 @@ library(genefilter)
 # Standard deviation filter
 # 1. Calculate the std deviation of every single gene
 # 2. Retaining the genes with (sd >= 2)
-rsd <- rowSds(dat.m)
-i <- rsd >= 2
-dat.f <- dat.m[i,]
+std_filter <- function(analyzed_dat, fname){
+    rsd <- rowSds(analyzed_dat)
+    i <- rsd >= 2
+    dat.f <- analyzed_dat[i,]
 
-print("Creating data dump... (dat.f.txt created)")
-write.table(dat.f,
-    "BeforeStatTest/StdFilter/dat.f.txt",
-    sep="\t",
-    row.names=T,
-    col.names=T,
-    quote=F)
+    print("Creating data dump... (dat.f.txt created)")
+    write.table(dat.f,
+        paste(fname, "dat.f.txt", sep=""),
+        sep="\t",
+        row.names=T,
+        col.names=T,
+        quote=F)
 
-rm(rsd, i)
+    rm(rsd, i)
+    dat.f
+}

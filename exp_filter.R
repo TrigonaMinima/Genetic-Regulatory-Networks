@@ -13,19 +13,22 @@ library(genefilter)
 #          percent of the samples.
 #     b) Interquartile range of log2–intensities should be at least 0.5
 #
-f1 <- pOverA(A=log2(100), p=0.25)
-f2 <- function(x) (IQR(x) > 0.5)
-ff <- filterfun(f1, f2)
-i <- genefilter(dat.m, ff)
-print(sum(i))
-dat.fo <- dat.m[i, ]
+exp_filter <- function(analyzed_dat, fname){
+    f1 <- pOverA(A=log2(100), p=0.25)
+    f2 <- function(x) (IQR(x) > 0.5)
+    ff <- filterfun(f1, f2)
+    i <- genefilter(analysed_dat, ff)
+    print(sum(i))
+    dat.fo <- analysed_dat[i, ]
 
-print("Creating data dump... (dat.fo.txt created)")
-write.table(dat.fo,
-    "BeforeStatTest/ExpFilter/dat.fo.txt",
-    sep="\t",
-    row.names=T,
-    col.names=T,
-    quote=F)
+    print("Creating data dump... (dat.fo.txt created)")
+    write.table(dat.fo,
+        paste(fname, "dat.fo.txt", sep=""),
+        sep="\t",
+        row.names=T,
+        col.names=T,
+        quote=F)
 
-rm(f1, f2, ff, i)
+    rm(f1, f2, ff, i)
+    dat.fo
+}
