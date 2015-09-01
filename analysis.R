@@ -4,27 +4,7 @@
 # One should probably use non-parametric methods for the analysis
 library(limma)
 
-    # rep("C2", 13),
-    # rep("C3", 12),
-    # rep("C4", 13),
-    # rep("C5", 11),
-    # rep("C6", 12),
-
-# Groups into which our data is divided.
-groups <- c(
-    rep("C", 74),
-    rep("T1", 10),
-    rep("T2", 10),
-    rep("T3", 16),
-    rep("T4", 9),
-    rep("T5", 23),
-    rep("T6", 19))
-
-# Creation of a model matrix.
-groups <- as.factor(groups)
-design <- model.matrix(~groups)
-# print(design)
-
+# Groups and model matrix were created by the data.R
 # On filtered data
 analysis <- function(filter_dat, fname){
     fit <- lmFit(filter_dat, design)
@@ -48,8 +28,6 @@ analysis <- function(filter_dat, fname){
     rm(fit, tt, rn)
     dat.s
 }
-
-
 
 # fit <- lmFit(dat.f, design)
 # fit <- eBayes(fit)
