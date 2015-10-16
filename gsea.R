@@ -1,6 +1,3 @@
-# Gene Set Enrichment Analysis
-# Works on filtered data
-
 # source("http://www.bioconductor.org/biocLite.R")
 # biocLite("hgu133plus2.db")
 library(hgu133plus2.db)

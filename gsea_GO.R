@@ -31,6 +31,7 @@ GO <- function(myids, fname){
     htmlReport(resultBP, fname, append=T)
     htmlReport(resultMF, fname, append=T)
     htmlReport(resultCC, fname, append=T)
+    print("Created the HTML report...")
 
     rm(params, fname)
     result <- list(resultBP = resultBP,

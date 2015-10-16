@@ -10,6 +10,7 @@ KEGG <- function(myids, fname) {
 
     fname <- paste(fname, "hypergeo_KEGG.html", sep="")
     htmlReport(result, fname, append=T)
+    print("HTML report generated...")
 
     rm(params, fname)
     result

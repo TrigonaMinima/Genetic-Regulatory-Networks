@@ -28,13 +28,3 @@ analysis <- function(filter_dat, fname){
     rm(fit, tt, rn)
     dat.s
 }
-
-# fit <- lmFit(dat.f, design)
-# fit <- eBayes(fit)
-
-# # Extracting the genes that have the unadjusted p-value at most 0.001
-# #  TODO: Think about the other values of coeff.
-# tt <- toptable(fit, coef=2, n=nrow(dat.f))
-# rn <- rownames(tt)[tt$P.Value <= 0.001]
-# # rn <- as.numeric(rn)
-# dat.s <- dat.f[rn, ]
