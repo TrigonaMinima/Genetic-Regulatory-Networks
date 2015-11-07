@@ -1,3 +1,10 @@
+Genetic Regulatory Networks
+=======
+
+# Data
+
+We are currently using the data-set provided in the [Dream Challenge](https://www.synapse.org/#!Synapse:syn3049712/wiki/) so that we can test the results of our algorithm.
+
 # What is Mutual Information?
 
 For calculating mutual information we need to understand Shanon Entropy which is basically calculated in terms of the probability of observing a particular symbol or event, pi, within a given sequence. It can be calculated for multiple variables and is given by the following formula:
