@@ -21,6 +21,10 @@ def rename_cols(dat, suffix):
     dat.columns = new_cols
 
 
+# TODO: Here a new dataframe is made twice the size of the original one.
+# The need for this dataframe can be removed if we directly use the binary
+# converted data of the original dataframe.
+# We will have to comeup with come logice.
 def data_conversion(dat):
     """
     Takes in a time series data frame converts it to a binary type and
