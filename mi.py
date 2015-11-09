@@ -10,7 +10,7 @@ def probab(col, j):
     return count[j] / len(col)
 
 
-def entropy(col):
+def entropy_one(col):
     p_one = probab(col, 1)
     p_zero = probab(col, 0)
 
@@ -19,8 +19,22 @@ def entropy(col):
 
     h = -1 * p_one * math.log(p_one)
     h += -1 * p_one * math.log(p_one)
-
     return h
+
+
+def entropy(dat, col1, col2):
+    # print(dat)
+    table = dat.pivot_table(index=[col1], columns=[col2], aggfunc=len)
+    total = len(dat)
+
+    # print(table)
+
+    p = pd.Series([table[0][0], table[0][1], table[1][0], table[1][1]])
+    p = p / total
+    p = p.apply(lambda x: -1 * x * math.log(x))
+
+    return p.sum()
+
 
 
 def h(*args):
@@ -53,11 +67,22 @@ def h(*args):
 def M_analysis(dat, K):
     mappings = {}
 
-    genes = len(dat.columns) / 2
+    genes = int(len(dat.columns) / 2)
 
-    for k in range(K):
-        for gene in range(genes):
-            pass
+    for gene in range(genes):
+        col1 = "G" + str(gene + 1) + "_t2"
+        for regulator in range(genes):
+            col2 = "G" + str(regulator + 1) + "_t1"
+            print("before cond")
+            if entropy(dat[[col1, col2]], col1, col2) == entropy_one(dat[col2]):
+                print("after cond")
+                print(col1, col2)
+
+
+
+    # for k in range(K):
+    #     for gene in range(genes):
+    #         pass
 
     # for j in range(11, 21):
     #     for i in range(0, 10):
