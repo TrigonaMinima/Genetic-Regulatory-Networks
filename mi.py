@@ -73,11 +73,11 @@ def M_analysis(dat, K):
     
     admatrix(mappings)  #Create adjacency matrix 
     
-    i = 0
-    while(i<10):        #Print adjacency in martrix form
+    i = 20
+    while(i>10):        #Print adjacency in martrix form
         
         print(adjacency[i])
-        i = i + 1
+        i = i - 1
     #print(json.dumps(mappings, indent=4, sort_keys=True))
     
     mappings_dump(mappings)
