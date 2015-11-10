@@ -5,6 +5,19 @@ import json
 
 import data_read
 
+adjacency = [[0 for x in range(10)] for x in range(10)]
+
+def admatrix(mappings):
+    """Creates adjacency matrix by analysing the mapings dictionary"""
+
+    for gen, regs in mappings.items():
+        for reg in regs:
+            if(len(reg) == 1):
+                adjacency[reg[0]][gen] = 1
+            else:
+                for obj in reg:
+                    adjacency[obj][gen] = 1
+
 
 def mappings_dump(mappings):
     """Dumps the mappings to a file names "mappings.json"."""
@@ -56,7 +69,17 @@ def M_analysis(dat, K):
                 if h1 and h1 == entropy(dat.iloc[:, [gene + genes] + regulator]):
                     mappings[gene] = mappings.get(gene, []) + [regulator]
 
-    # print(json.dumps(mappings, indent=4, sort_keys=True))
+    #print(mappings)
+    
+    admatrix(mappings)  #Create adjacency matrix 
+    
+    i = 0
+    while(i<10):        #Print adjacency in martrix form
+        
+        print(adjacency[i])
+        i = i + 1
+    #print(json.dumps(mappings, indent=4, sort_keys=True))
+    
     mappings_dump(mappings)
 
 
