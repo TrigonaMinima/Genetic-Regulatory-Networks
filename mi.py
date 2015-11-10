@@ -1,67 +1,67 @@
 import pandas as pd
-import math
+import numpy as np
 
 import data_read
 
 
-def probab(col, j):
-    count = col.value_counts()
+def entropy(dat, col1=None):
+    temp = dat.apply(lambda x: "".join([str(i) for i in x.values]), axis=1)
+    counts = temp.value_counts()
 
-    return count[j] / len(col)
-
-
-def entropy_one(col):
-    p_one = probab(col, 1)
-    p_zero = probab(col, 0)
-
-    if p_one == p_zero:
-        return 1.0
-
-    h = -1 * p_one * math.log(p_one)
-    h += -1 * p_one * math.log(p_one)
-    return h
-
-
-def entropy(dat, col1, col2):
-    # print(dat)
-    table = dat.pivot_table(index=[col1], columns=[col2], aggfunc=len)
-    total = len(dat)
-
-    # print(table)
-
-    p = pd.Series([table[0][0], table[0][1], table[1][0], table[1][1]])
-    p = p / total
-    p = p.apply(lambda x: -1 * x * math.log(x))
+    p = pd.Series(list(counts.values))
+    p = p / len(dat)
+    p = p.apply(lambda x: -1 * x * np.log(x))
 
     return p.sum()
 
 
+# def entropy(dat, col1, col2):
+#     # print(dat)
+#     table = dat.pivot_table(index=[col1], columns=[col2], aggfunc=len)
+#     total = len(dat)
 
-def h(*args):
-    i = 0
-    ent = 0
-    for arg in args:
-        for j in range(0, 20):
-            temp[j][i] = gene[j][arg]
-        i = i + 1
+#     # print(table.shape)
 
-    i = i - 1
-    t = i
+#     if table.shape == (2, 2):
+#         p = pd.Series([table[0][0], table[0][1], table[1][0], table[1][1]])
+#     else:
+#         p = pd.Series(
+#             [handle_bad_cases(table, i, j)
+#              for i, j in [(0, 0), (0, 1), (1, 0), (1, 1)]]
+#         )
 
-    while j > -1:
-        i = t
-        while i > -1:
-            samp[j] = samp[j] + temp[j][i]
-            i = i - 1
-        j = j - 1
+#     # p = pd.Series([table[0][0], table[0][1], table[1][0], table[1][1]])
+#     p = p / total
+#     p = p.apply(lambda x: -1 * x * np.log(x))
 
-    uni = list(set(samp))
+#     return p.sum()
 
-    for c in uni:
-        p = pro(samp, c)
-        ent += p * m.log2(p)
 
-    return -1 * ent
+# def h(*args):
+#     i = 0
+#     ent = 0
+#     for arg in args:
+#         for j in range(0, 20):
+#             temp[j][i] = gene[j][arg]
+#         i = i + 1
+
+#     i = i - 1
+#     t = i
+
+#     while j > -1:
+#         i = t
+#         while i > -1:
+#             samp[j] = samp[j] + temp[j][i]
+#             i = i - 1
+#         j = j - 1
+
+#     uni = list(set(samp))
+
+#     for c in uni:
+#         p = pro(samp, c)
+#         ent += p * m.log2(p)
+
+#     return -1 * ent
 
 
 def M_analysis(dat, K):
@@ -69,26 +69,19 @@ def M_analysis(dat, K):
 
     genes = int(len(dat.columns) / 2)
 
-    for gene in range(genes):
-        col1 = "G" + str(gene + 1) + "_t2"
-        for regulator in range(genes):
-            col2 = "G" + str(regulator + 1) + "_t1"
-            print("before cond")
-            if entropy(dat[[col1, col2]], col1, col2) == entropy_one(dat[col2]):
-                print("after cond")
-                print(col1, col2)
+    for k in range(K):
+        for gene in range(genes):
+            col1 = "G" + str(gene + 1) + "_t2"
+            for regulator in range(genes):
+                col2 = "G" + str(regulator + 1) + "_t1"
+                # print(entropy(dat[[col1, col2]], col1, col2),
+                #       entropy_one(dat[col2]))
 
-
-
-    # for k in range(K):
-    #     for gene in range(genes):
-    #         pass
-
-    # for j in range(11, 21):
-    #     for i in range(0, 10):
-    #         if(h(i) == h(j, i)):
-    #             print(h(i))
-    #             print("%d is determined by %d" % (i, j))
+                h1 = entropy(dat.iloc[:, [regulator]])
+                if h1 and h1 == entropy(dat.iloc[:, [gene, regulator]]):
+                    print(col1, "<-", col2,
+                          "[", h1, entropy(dat.iloc[:, [gene, regulator]]), "]")
+        break
 
 
 if __name__ == "__main__":
