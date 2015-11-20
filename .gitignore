@@ -2,3 +2,5 @@ Data/*
 
 grn.sublime-project
 grn.sublime-workspace
+
+__pycache__/*
