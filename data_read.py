@@ -67,11 +67,20 @@ def data_conversion(dat):
     return dicho_d
 
 
-if __name__ == "__main__":
-
+def reading(file):
     # first set of observations loaded
-    data = pd.read_table("Data/insilico_timeseries.tsv",
-                         nrows=21, index_col="Time")
+    data = pd.read_table(file, index_col="Time")
+
+    datas = []
+    for i in range(0, 5):
+        datas.append(data.iloc[i*21: (i+1)*21])
+
+    return(datas)
+
+
+if __name__ == "__main__":
+    # Reading the data
+    datas = reading("Data/insilico_timeseries.tsv")
 
     # Required data to test MI on
     final_dat = data_conversion(data)

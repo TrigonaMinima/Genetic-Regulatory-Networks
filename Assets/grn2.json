@@ -1,0 +1,156 @@
+{
+    "links": [
+        {
+            "target": 1,
+            "source": 0
+        },
+        {
+            "target": 2,
+            "source": 0
+        },
+        {
+            "target": 3,
+            "source": 0
+        },
+        {
+            "target": 4,
+            "source": 0
+        },
+        {
+            "target": 6,
+            "source": 0
+        },
+        {
+            "target": 1,
+            "source": 2
+        },
+        {
+            "target": 2,
+            "source": 2
+        },
+        {
+            "target": 3,
+            "source": 2
+        },
+        {
+            "target": 4,
+            "source": 2
+        },
+        {
+            "target": 6,
+            "source": 2
+        },
+        {
+            "target": 1,
+            "source": 5
+        },
+        {
+            "target": 2,
+            "source": 5
+        },
+        {
+            "target": 3,
+            "source": 5
+        },
+        {
+            "target": 4,
+            "source": 5
+        },
+        {
+            "target": 6,
+            "source": 5
+        },
+        {
+            "target": 1,
+            "source": 7
+        },
+        {
+            "target": 2,
+            "source": 7
+        },
+        {
+            "target": 3,
+            "source": 7
+        },
+        {
+            "target": 4,
+            "source": 7
+        },
+        {
+            "target": 6,
+            "source": 7
+        },
+        {
+            "target": 1,
+            "source": 8
+        },
+        {
+            "target": 2,
+            "source": 8
+        },
+        {
+            "target": 3,
+            "source": 8
+        },
+        {
+            "target": 4,
+            "source": 8
+        },
+        {
+            "target": 6,
+            "source": 8
+        },
+        {
+            "target": 1,
+            "source": 9
+        },
+        {
+            "target": 2,
+            "source": 9
+        },
+        {
+            "target": 3,
+            "source": 9
+        },
+        {
+            "target": 4,
+            "source": 9
+        },
+        {
+            "target": 6,
+            "source": 9
+        }
+    ],
+    "nodes": [
+        {
+            "name": "G1"
+        },
+        {
+            "name": "G2"
+        },
+        {
+            "name": "G3"
+        },
+        {
+            "name": "G4"
+        },
+        {
+            "name": "G5"
+        },
+        {
+            "name": "G6"
+        },
+        {
+            "name": "G7"
+        },
+        {
+            "name": "G8"
+        },
+        {
+            "name": "G9"
+        },
+        {
+            "name": "G10"
+        }
+    ]
+}

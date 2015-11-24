@@ -1,0 +1,136 @@
+{
+    "links": [
+        {
+            "target": 0,
+            "source": 8
+        },
+        {
+            "target": 1,
+            "source": 8
+        },
+        {
+            "target": 2,
+            "source": 8
+        },
+        {
+            "target": 3,
+            "source": 8
+        },
+        {
+            "target": 4,
+            "source": 8
+        },
+        {
+            "target": 9,
+            "source": 8
+        },
+        {
+            "target": 2,
+            "source": 4
+        },
+        {
+            "target": 0,
+            "source": 5
+        },
+        {
+            "target": 1,
+            "source": 5
+        },
+        {
+            "target": 2,
+            "source": 5
+        },
+        {
+            "target": 3,
+            "source": 5
+        },
+        {
+            "target": 4,
+            "source": 5
+        },
+        {
+            "target": 9,
+            "source": 5
+        },
+        {
+            "target": 0,
+            "source": 6
+        },
+        {
+            "target": 1,
+            "source": 6
+        },
+        {
+            "target": 2,
+            "source": 6
+        },
+        {
+            "target": 3,
+            "source": 6
+        },
+        {
+            "target": 4,
+            "source": 6
+        },
+        {
+            "target": 9,
+            "source": 6
+        },
+        {
+            "target": 0,
+            "source": 7
+        },
+        {
+            "target": 1,
+            "source": 7
+        },
+        {
+            "target": 2,
+            "source": 7
+        },
+        {
+            "target": 3,
+            "source": 7
+        },
+        {
+            "target": 4,
+            "source": 7
+        },
+        {
+            "target": 9,
+            "source": 7
+        }
+    ],
+    "nodes": [
+        {
+            "name": "G1"
+        },
+        {
+            "name": "G2"
+        },
+        {
+            "name": "G3"
+        },
+        {
+            "name": "G4"
+        },
+        {
+            "name": "G5"
+        },
+        {
+            "name": "G6"
+        },
+        {
+            "name": "G7"
+        },
+        {
+            "name": "G8"
+        },
+        {
+            "name": "G9"
+        },
+        {
+            "name": "G10"
+        }
+    ]
+}

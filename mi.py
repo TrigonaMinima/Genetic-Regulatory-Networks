@@ -67,7 +67,7 @@ def entropy(dat):
 
 # TODO: Change the function to work when data is not converter.
 # That'll save us some precious RAM memory and some time.
-def M_analysis(dat, K):
+def M_analysis(dat, K, file1, file2):
     """
     Takes in dataframe and K and creates a list of the genes / pair of
     genes, for each gene, using the mutual information criteria.
@@ -88,17 +88,15 @@ def M_analysis(dat, K):
                     mappings[gene] = mappings.get(gene, []) + [regulator]
 
     # Dumps the mappings in a file.
-    mappings_dump(mappings, "Data/mappings.json")
+    mappings_dump(mappings, file1)
 
     # Makes the json file for visualization.
-    visualization(mappings, genes, "Assets/grn.json")
+    visualization(mappings, genes, file2)
 
 
 if __name__ == "__main__":
-    # first set of observations loaded
-    data = pd.read_table("Data/insilico_timeseries.tsv",
-                         nrows=21, index_col="Time")
-    print("Dataset loaded!")
+    # Reading the data
+    datas = data_read.reading("Data/insilico_timeseries.tsv")
 
     # Required data to test MI on
     final_dat = data_read.data_conversion(data)

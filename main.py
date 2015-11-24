@@ -8,22 +8,28 @@ import data_read
 import mi
 
 
-# first set of observations loaded
-data = pd.read_table("Data/insilico_timeseries.tsv",
-                     nrows=21, index_col="Time")
-print("Dataset loaded!")
+# Reading the data
+datas = data_read.reading("Data/insilico_timeseries.tsv")
+# print(datas)
 
 # Required data to test MI on
-final_dat = data_read.data_conversion(data)
+final_datas = []
+for data in datas:
+	final_datas.append(data_read.data_conversion(data))
 print("Dataset converted!")
+# print(final_datas)
 
 # Performing Mutual Information on the final dataframe.
 print("MI Analysis initiated...")
-mi.M_analysis(final_dat, 2)
-print("MI Analysis over! Have a look at the mappings in 'Data/mappings.json'")
+
+for i, final_data in enumerate(final_datas):
+	f1 = "Data/mappings" + str(i+1) + ".json"
+	f2 = "Assets/grn" + str(i+1) + ".json"
+	mi.M_analysis(final_data, 2, f1, f2)
+	print("MI Analysis over! Have a look at the mappings in ", f1)
 
 # Setting up the server for the graph viz.
 handler = http.server.SimpleHTTPRequestHandler
 server = http.server.HTTPServer(('localhost', 8000), handler)
-print("\nThe graph visualized at http://localhost:8000/Viz.html")
+print("\nThe graph visualized at http://localhost:8000/Viz2.html")
 server.serve_forever()
