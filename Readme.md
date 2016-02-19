@@ -40,3 +40,9 @@ Our data is a time-series data in which we have the gene expressions at various 
 3. Start with k=1, for first gene(G1), calculate H(X),H(G1',X) for X = G1, G2,.....Gn, as soon as they are obtained to be equal we move to the next gene.
 
 4. If for all possible values of X they are found to be unequal, then consider all combinations taking k=2 genes at a time and then recalcuate both the values for X = (G1,G2), (G1,G3), .... (Gn-1,Gn)
+
+# Implementation
+
+The algorithm was implemented and the resulting GRNs were visualized using D3.js
+
+http://bl.ocks.org/agr-shrn/raw/71e270fe62eeea503e46/
